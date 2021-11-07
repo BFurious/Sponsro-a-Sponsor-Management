@@ -5,7 +5,7 @@
   "main": "sponsronode.js",
   "scripts": {
     
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && gexit 1",
     "start":"node sponsro.js"
   },
   "author": "",
