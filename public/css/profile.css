@@ -1,0 +1,251 @@
+
+body{
+    background-color: rgba(3, 3, 3, 0.37);
+  background-blend-mode:darken;
+}
+.introheading{
+    font-family:Verdana, Geneva, Tahoma, sans-serif, sans-serif;
+    font-size: 4vw;
+    text-align: center;
+    max-width: 50%;
+    margin:auto;
+   background-color:rgba(0, 0, 0, 0.781);
+   border-radius: 15px;
+   margin-top: 5px;
+    color: blanchedalmond;
+}
+.content{
+    max-width:50%;
+    margin:auto;
+    color: blanchedalmond;
+    background-color: rgba(3, 3, 3, 0.849);
+  background-blend-mode:darken;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 15px;
+  padding:20px;
+}
+/* bars animation*/
+.sideNavicon{
+    display: inline-block;
+    cursor: pointer;
+    margin:0px;
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+  }
+  
+  .change .bar2 {opacity: 0;}
+  
+  .change .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-8px, -8px);
+  }
+/*-----------------------------------*/
+.sideNav{
+    display:flex; 
+    max-width:22%; 
+    position: fixed;
+}
+.sideNavContent,.searchBox{
+	display:none;
+   
+}
+.sideNavContent{
+    position: relative;
+    width: 100%;
+    margin:10px 0px 0px 10px;
+    border-radius: 10px;
+    background-blend-mode:darken ;
+    animation: 1s sidenav;
+    animation-timing-function:linear;
+    float:left;
+    background-color: rgba(3, 3, 3, 0.849);
+  background-blend-mode:darken;
+}
+.sideNavContent a{
+    display: block;
+}
+.sideNavContent a:hover{
+    color:blanchedalmond;
+}
+.sideNavContent li{
+    margin:10px;
+    padding: 10px;
+    border-radius: 10px;
+    display:block;
+}
+.sideNavContent li:hover{
+    background:black;
+}
+.searchBox{
+    color: blanchedalmond;
+    font-size: small;
+    position:fixed;
+    right:60px;
+    top: 70px;
+    margin:20px;
+    width:200px;
+    background-color: rgba(3, 3, 3, 0.849);
+  background-blend-mode:darken;
+    border-radius: 10px;
+    background-blend-mode:darken ;
+    padding:10px 5px 10px 5px;
+    animation: 1s searchbox;
+    animation-timing-function:linear;
+    float:right;
+}
+
+.searchicon{
+    position:fixed;
+    right:0px;
+    top: 70px;
+    margin:20px;
+}
+.sideNavicon{
+    margin:10px 10px 0px 5px;
+    animation: 1s sidenavicon;
+    animation-timing-function:linear;
+}
+.searchicon img,.sadNavicon img{
+    width:35%;
+    float:right;
+}
+.searchicon img:hover,.sadNavicon img:hover{
+    background-color:rgb(184, 133, 231);
+    background-blend-mode: darken;
+}
+
+/*------------------------ Add Sponsor start--------------------- */
+.sponsForm{
+    margin: 20px auto;
+    color: blanchedalmond;
+    padding:5%; 
+    border-radius:20px;
+    width:50%;
+    background-image:url(../images/Sponsorship.jpg);
+     background-color: rgba(3, 3, 3, 0.849);
+  background-blend-mode:darken;
+}
+.sponsFormInside,.searchInside{
+    display:flex;
+    flex-direction:row;
+    margin:10px;
+}
+.sponsFormInside input,.searchInside input{
+    max-width:100%;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px;
+}
+.sponsFormInside label{
+    padding:5px;
+    text-align: center;
+    width:40%;
+}
+.submit{
+    justify-content: center;
+    padding:10px;
+    border-radius: 20px;
+    border:2px blanchedalmond inset;
+    width:50%;
+    color:blanchedalmond;
+    margin-top: 20px;
+}
+.smallSubmit a{
+    display: block;
+}
+.smallSubmit a:hover{
+    color:black;
+   
+}
+.smallSubmit,#delete{    
+    margin:5px;
+    padding:10px;
+    border-radius: 20px;
+    border:2px blanchedalmond inset;
+    color:blanchedalmond;
+    margin-top: 20px;
+    width:150px;
+}
+.submit:hover,.smallSubmit:hover{
+    background-color: blanchedalmond;
+    color:black;
+    border:2px black inset;
+}
+.searchResult{
+    font-size: 0.7em;
+    width:50%;
+    margin:auto;
+}
+.postCollection{
+    width:100%;
+    display:inline-block;
+    color:blanchedalmond;
+    margin:2%;
+    background-color: rgba(3, 3, 3, 0.849);
+  background-blend-mode:darken;
+    border-radius:15px; 
+    padding: 5%;
+}
+.postCollectionInside{
+    width:100%;
+    display:inline-block;
+}
+.postContainer{
+    width:70%;
+    float:left;
+}
+
+.postLogo{
+    width:20%;
+    float:right;
+}
+.postLogo img{
+    width:100%;
+}
+/*------------------------ Add Sponsor End------------------------ */
+
+@keyframes searchbox {
+    0%{
+        right:10px;
+        opacity:0;
+    }
+    100%{
+        right:60px;
+        opacity:1;
+    }
+}
+@keyframes sidenav {
+    0%{
+        left:-100px;
+        opacity:0;
+    }
+    100%{
+        left:0px;
+        opacity:1;
+    }
+}
+@keyframes sidenavicon{
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+}
+.showAlert{
+    
+    background-color: black;
+    display:none;
+}

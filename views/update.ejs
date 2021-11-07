@@ -1,0 +1,48 @@
+<%- include("./partials/header.ejs") %>
+<%- include("./partials/extraheader.ejs") %>
+
+<div class="introheading">Update SPONSOR</div>
+<div class="sponsForm">
+    <form action="/<%=ejsUsername%>/<%=data._id%>?_method=PUT" method="POST">
+        <div class="sponsFormInside">
+           
+            <label for="companyName">Company Name</label>
+            <input type="text" name="companyName" value="<%=data.companyName%>"></input>
+        </div>
+        <div class="sponsFormInside">
+                <label for="sponsor Type">Sponsor Type:</label>
+                <input type="text" name="sponsorType" value="<%=data.sponsorType%>"></input>    
+        </div>
+        <div class="sponsFormInside">         
+                <label for="durationNo">Duration No</label>
+                <input type="text" name="durationNo" value="<%=data.durationNo%>"></input>           
+        </div>
+        <div class="sponsFormInside">           
+                <label for=" contactNo"> Contact No</label>
+                <input type="text" name="contactNo" value="<%=data.contactNo%>"></input> 
+        </div>
+        <div class="sponsFormInside">           
+                <label for="contactEmail">ContactEmail</label>
+                <input type="text" name="contactEmail" value="<%=data.contactEmail%>"></input>
+            
+        </div>
+        <div class="sponsFormInside">
+                <label for="logo">Thumbnail</label>
+                <input type="text" name="logo" value="image url"></input>
+                <img src="<%=data.logo%>" style=" margin-left:10px; width:50px; float:right;" alt="no image"></img>
+        </div>
+       <div style=" text-align: center;">
+        <button class="submit" type="submit" value="submit">Update</button>
+        </div>
+    </form>
+</div>
+<div class="alert-container" style="display:none;"> 
+	<div class="alert alert-danger" role="alert">
+		<%= error%>
+	</div>
+	<div class="alert alert-success" role="alert">
+		<%= success%>
+	</div>
+</div>
+</div>
+<%- include("./partials/footer.ejs") %>

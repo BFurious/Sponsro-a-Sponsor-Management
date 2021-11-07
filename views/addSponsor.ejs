@@ -1,0 +1,47 @@
+<%- include("./partials/header.ejs") %>
+<%- include("./partials/extraheader.ejs") %>
+
+<div class="introheading">ADD SPONSOR</div>
+<div class="sponsForm">
+    <form action="/<%=ejsUsername%>/addSponsor" method="POST">
+        <div class="sponsFormInside">
+           
+            <label for="companyName">Company Name</label>
+            <input type="text" name="companyName" placeholder="Google"></input>
+        </div>
+        <div class="sponsFormInside">
+                <label for="sponsor Type">Sponsor Type:</label>
+                <input type="text" name="sponsorType" placeholder="Technology"></input>    
+        </div>
+        <div class="sponsFormInside">         
+                <label for="durationNo">Duration No</label>
+                <input type="text" name="durationNo" placeholder="2"></input>           
+        </div>
+        <div class="sponsFormInside">           
+                <label for=" contactNo"> Contact No</label>
+                <input type="text" name="contactNo" placeholder="987654321"></input> 
+        </div>
+        <div class="sponsFormInside">           
+                <label for="contactEmail">ContactEmail</label>
+                <input type="text" name="contactEmail" placeholder="abc@gmail.com"></input>
+            
+        </div>
+        <div class="sponsFormInside">
+                <label for="logo">Thumbnail</label>
+                <input type="text" name="logo" placeholder="image url"></input>
+        </div>
+       <div style=" text-align: center;">
+        <button class="submit" type="submit" value="submit">Submit</button>
+</div>
+    </form>
+</div>
+<div class="alert-container" style="display:none;"> 
+	<div class="alert alert-danger" role="alert">
+		<%= error%>
+	</div>
+	<div class="alert alert-success" role="alert">
+		<%= success%>
+	</div>
+</div>
+</div>
+<%- include("./partials/footer.ejs") %>

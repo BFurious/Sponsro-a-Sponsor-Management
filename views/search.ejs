@@ -1,0 +1,45 @@
+<%- include("./partials/header.ejs") %>
+<%- include("./partials/extraheader.ejs") %>
+
+
+<div class="introheading"> Search Results </div>
+
+<div class="searchResult">
+<% data.forEach(function(ele){ %>       
+  <div class="postCollection">
+     
+    <div class="postColletionInside">    
+        <div class="postContainer">
+            <h5> Company Name: <%= ele.companyName %> </h5>
+            <ul> 
+                <li>Sponsor Type: <%=ele.sponsorType %></li>
+                <li>Duration Period: <%=ele.durationNo %></li> 
+                <li>Contact No: <%=ele.contactNo  %></li> 
+                <li>Contact Email: <%=ele.contactEmail %></li>
+            </ul>
+        </div> 
+        <div class="postLogo">
+                <img src="<%=ele.logo%>" alt="No IMG"></img>
+        </div>
+    </div>  
+    <div class="smallButton" style="display: flex; width:100%;">
+            
+                <button class="smallSubmit"><a href="/<%=ejsUsername%>/<%=ele._id%>/apply">Apply Now</a> </button>
+            
+           
+                <button class="smallSubmit" > <a href="/<%=ejsUsername%>/<%=ele._id%>/update">Edit </a></button>
+                
+                <form action="/<%=ejsUsername%>/<%=ele._id%>?_method=DELETE" method="POST">
+                <button class="smallSubmit" id="delete">Delete</button>
+            </form>
+    </div> 
+    </div>
+<% }) %>
+</div>
+
+
+
+
+
+
+<%- include("./partials/footer.ejs") %>
