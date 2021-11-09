@@ -44,6 +44,6 @@ app.use(function(req,res,next){
 app.use(signup);
 app.use(home);
 app.use(profile);
-app.listen(process.env.PORT,process.env.ID,function(){
+app.listen(process.env.PORT,process.env.IP,function(){
     console.log("started");
 });
