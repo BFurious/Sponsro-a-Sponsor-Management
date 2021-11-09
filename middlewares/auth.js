@@ -11,7 +11,7 @@ middlewares.isLoggedIn = function(req, res, next){
 middlewares.isLogged = function(req, res, next){
     if(req.isAuthenticated()){
         req.flash("error","Already Logged in");
-       res.redirect("/"+req.user.username);
+       res.redirect("/"+req.user.username+"/0");
     }
     return next();
 }

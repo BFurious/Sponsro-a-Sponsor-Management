@@ -17,4 +17,4 @@ var UserSchema = new mongoose.Schema({
     sponsordata:[sponsSchema]
     });
 
-module.exports = mongoose.model("User",UserSchema);
+module.exports = mongoose.model("application",UserSchema);

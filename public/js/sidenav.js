@@ -28,3 +28,9 @@ const sidenav = document.querySelector(".sideNavContent"),
     function myFunction(x) {
         x.classList.toggle("change");
       }
+
+      $('.txt').html(function(i, html) {
+        var chars = $.trim(html).split("");
+      
+        return '<span>' + chars.join('</span><span>') + '</span>';
+      });

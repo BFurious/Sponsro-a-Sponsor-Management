@@ -158,7 +158,24 @@ iframe {
   width: 100%;
   margin: 0 auto;
 }
-
+.login100-pic{
+  background-image: url(../images/111801420-data-secure-concept-red-closed-padlock-on-binary-code-background-cyber-security-and-protection-of-ne.jpg);
+  width:50%;
+  border-radius: 20px;
+	background-position: center;
+  background-size: contain;
+  background-blend-mode: darken;
+  background-color: rgb(131, 198, 152);
+}
+.login100-pic1{
+  background-image: url(../images/istockphoto-466487479-170667a.jpg);
+  width:50%;
+  border-radius: 20px;
+	background-position: right;
+  background-size: contain;
+  background-blend-mode: darken;
+  background-color: rgba(43, 130, 206, 0.993);
+}
 .container-login100 {
   width: 100%;  
   min-height: 100vh;
@@ -170,14 +187,13 @@ iframe {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  padding: 15px;
   background-image:url(/images/13.jpg);
   background-repeat:round ;
 }
 
 .wrap-login100 {
   width: 960px;
-  border-radius: 12px;
+  border-radius: 15px;
   overflow: hidden;
   background-image:url(/images/13.jpg); 
 background-repeat:no-repeat ;

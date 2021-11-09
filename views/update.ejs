@@ -1,9 +1,9 @@
 <%- include("./partials/header.ejs") %>
-<%- include("./partials/extraheader.ejs") %>
+<%- include("./partials/adminheader.ejs") %>
 
 <div class="introheading">Update SPONSOR</div>
 <div class="sponsForm">
-    <form action="/<%=ejsUsername%>/<%=data._id%>?_method=PUT" method="POST">
+    <form action="/<%=ejsUsername%>/0/<%=data._id%>?_method=PUT" method="POST">
         <div class="sponsFormInside">
            
             <label for="companyName">Company Name</label>
@@ -28,7 +28,7 @@
         </div>
         <div class="sponsFormInside">
                 <label for="logo">Thumbnail</label>
-                <input type="text" name="logo" value="image url"></input>
+                <input type="text" name="logo" value="<%=data.logo%>"></input>
                 <img src="<%=data.logo%>" style=" margin-left:10px; width:50px; float:right;" alt="no image"></img>
         </div>
        <div style=" text-align: center;">

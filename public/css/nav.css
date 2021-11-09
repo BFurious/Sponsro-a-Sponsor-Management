@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
+
+/*-------------text animation--------*/
+
+
+/*-------------------------------------*/
+
+.nav-link {
+	font-family: 'Ubuntu';
+	text-transform:uppercase ;
+
+
+  }
+
 * {
 	margin: 0;
 	padding: 0;
@@ -36,8 +50,7 @@
 	float: left;
 }
 #navbarSupportedContent ul li a{
-	color: rgb(172, 169, 169);
-    text-decoration: none;
+	color: rgb(111, 111, 111);
     font-size: 15px;
     display: block;
     padding: 20px 20px;

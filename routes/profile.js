@@ -5,30 +5,55 @@ const User=require("../models/user"),
      middlewares = require("../middlewares/auth"),
      controller=require("../controllers/user")
 
-router.get("/:profile",middlewares.isLoggedIn,function(req,res){
+     /*--------------------------DASHBOARD--------------------------*/
+
+router.get("/:profile/:type",middlewares.isLoggedIn,function(req,res){
+    var type=req.params.type;
     var username=req.params.profile;
-    res.render("profile",{
-        ejsUsername:username
-    });
+    if(type==="0"){
+        res.render("profile",{
+            ejsUsername:username
+        });
+    }
+    else if(type==="1")
+    {
+        res.render("userprofile",{
+            ejsUsername:username
+        });
+    }
 })
 
-router.get("/:profile/addSponsor",middlewares.isLoggedIn,function(req,res){
-    var username=req.params.profile;
-    res.render("addSponsor",{ 
-        ejsUsername:username
-    });
+/*-------------------------USER DATA---------------------------*/
+
+router.get("/:profile/:type/userdata",middlewares.isLoggedIn,function(req,res){
+    User.findOne({username:req.params.profile},function(err,user){
+        if(err)
+        {
+            req.flash("error",err.toString());
+        }
+        else
+        {    res.render("userdata",{userdata:user});
+        }
+    })
+   
 })
-router.post("/:profile/addSponsor",middlewares.isLoggedIn,function(req,res){
+
+/*-------------------------ADD SPONSOR----------------------------*/
+
+router.get("/:profile/:type/addSponsor",middlewares.isLoggedIn,function(req,res){    console.log("entered");
+    var username=req.params.profile;
+    res.render("addSponsor",{ejsUsername:username});
+})
+
+router.post("/:profile/:type/addSponsor",function(req,res){
     var username=req.params.profile;
     var sponsdata=new sponsData(req.body);
     sponsdata.save(function (err,user) {
             if (err) {
-                console.log(err);
+                req.flash("error",err.toString());
             }
+    })
 
-            else {
-            }
-        });
     User.findOne({username:req.params.profile},function(err,user){
         if(err)
         {
@@ -45,56 +70,114 @@ router.post("/:profile/addSponsor",middlewares.isLoggedIn,function(req,res){
                 else
                 {
                     req.flash("success","Post Successfully added");
-                    res.redirect("/"+username);
+                    res.redirect("/"+username+"/0");
                 }
             })
         }
     })
-});
-router.get("/:profile/search",function(req,res){
+})
+
+/*--------------------------ADMIN-POSTS----------------------------*/
+router.get("/:profile/:type/posts",middlewares.isLoggedIn,function(req,res){
     var username=req.params.profile;
-    var query=req.query.searchText;
-    let choice=req.query.choice;
-    sponsData.find({$or: [{companyName:{$regex: query, $options: '$i'}},{sponsorType:{$regex: query, $options: '$i'}}]},function(err,data){  
-        if(err){  
-            console.log(err);  
+    
+    User.findOne({username:req.params.profile},function(err,user){
+        if(err)
+        {
+            req.flash("error",err.toString());
         }
-        else{  
-            res.render("search",{data:data,ejsUsername:username});  
-        }  
-    });    
-});
-router.get("/:profile/:id/update",function(req,res){ 
+        else
+        {
+            res.render("adminposts",{data:user.sponsordata,ejsUsername:username});
+        }
+    })
+})
+
+/*------------------------SPONSOR-APPLY---------------------------*/
+
+router.post("/:profile/:type/apply",function(req,res){
+    var username=req.params.profile;
+
+    User.findOne({username:req.params.profile},function(err,user){
+        if(err)
+        {
+            req.flash("error",err.toString());
+        }
+        else
+        {
+            user.sponsordata.push(req.body);
+            user.save(function(err,user){
+                if(err)
+                {
+                    req.flash("error",err.toString());
+                }
+                else
+                {
+                    req.flash("success","Applied Successfully");
+                    res.redirect("/"+username+"/1/applications");
+                }
+            })
+        }
+    })
+})
+
+/*--------------------------USER APPLICATIONS----------------------------*/
+
+router.get("/:profile/:type/applications",middlewares.isLoggedIn,function(req,res){
+    var username=req.params.profile;
+    User.findOne({username:req.params.profile},function(err,user){
+        if(err)
+        {
+            req.flash("error",err.toString());
+        }
+        else
+        {
+            res.render("userApp",{data:user.sponsordata,ejsUsername:username});
+        }
+    })
+})
+
+/*--------------------------UPDATE----------------------------*/
+
+router.get("/:profile/:type/:id/update",middlewares.isLoggedIn,function(req,res){ 
     var username=req.params.profile;  
     sponsData.findById(req.params.id,function(err,data){
             if(err)
             {
-                console.log("err");
+                req.flash("error",err.toString());
             }
             else{
+               
                     res.render("update.ejs",{data:data,ejsUsername:username});
             }
     })
 })
-router.put("/:profile/:id",(req, res) => {
+
+router.put("/:profile/:type/:id",(req, res) => {
     var username=req.params.profile;  
         sponsData.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
             if (err) {
-                console.log("err");
+                req.flash("erroe",err.toString());
             }
             else {
-                res.redirect("/"+username);
+                req.flash("success","Updated Successfully");
+                res.redirect("/"+username+"/0");
             }
-        });
+        })
     })
-router.delete("/:profile/:id",(req, res) =>{   var username=req.params.profile;
+
+    /*--------------------------DELETE----------------------------*/
+
+router.delete("/:profile/:type/:id",(req, res) =>{   
+    var username=req.params.profile;
         sponsData.findByIdAndRemove(req.params.id,function (err) {
             if (err) {
-                console.log("err");
+                req.flash("error",err.toString());
             }
             else {
-              
+                req.flash("success","Deleted Successfully");
+                res.redirect("/"+username+"/0");
             }
-        });
+        })
     })
 module.exports = router;

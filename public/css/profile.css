@@ -2,10 +2,11 @@
 body{
     background-color: rgba(3, 3, 3, 0.37);
   background-blend-mode:darken;
+  height:auto;
 }
 .introheading{
     font-family:Verdana, Geneva, Tahoma, sans-serif, sans-serif;
-    font-size: 4vw;
+    font-size: 3vw;
     text-align: center;
     max-width: 50%;
     margin:auto;
@@ -14,7 +15,7 @@ body{
    margin-top: 5px;
     color: blanchedalmond;
 }
-.content{
+.content,.userdata{
     max-width:50%;
     margin:auto;
     color: blanchedalmond;
@@ -55,11 +56,13 @@ body{
 .sideNav{
     display:flex; 
     max-width:22%; 
-    position: fixed;
+    position:sticky;
+    top:0px;
+    left:10px;
+    float: left;
 }
 .sideNavContent,.searchBox{
 	display:none;
-   
 }
 .sideNavContent{
     position: relative;
@@ -91,10 +94,10 @@ body{
 .searchBox{
     color: blanchedalmond;
     font-size: small;
-    position:fixed;
+    position:sticky;
     right:60px;
-    top: 70px;
-    margin:20px;
+    top:10px;
+    margin-right:10px;
     width:200px;
     background-color: rgba(3, 3, 3, 0.849);
   background-blend-mode:darken;
@@ -107,9 +110,9 @@ body{
 }
 
 .searchicon{
-    position:fixed;
+    position:sticky;
     right:0px;
-    top: 70px;
+    top: 10px;
     margin:20px;
 }
 .sideNavicon{
@@ -118,12 +121,15 @@ body{
     animation-timing-function:linear;
 }
 .searchicon img,.sadNavicon img{
-    width:35%;
+    width:45px;
     float:right;
 }
-.searchicon img:hover,.sadNavicon img:hover{
-    background-color:rgb(184, 133, 231);
+.searchicon img:hover{
+    margin:2px;
+    background-color:hsl(189, 57%, 56%);
     background-blend-mode: darken;
+    border-radius:10px ;
+    box-shadow: 2px 2px rgb(13, 115, 146) ;
 }
 
 /*------------------------ Add Sponsor start--------------------- */
