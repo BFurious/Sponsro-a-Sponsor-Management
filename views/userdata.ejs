@@ -1,0 +1,19 @@
+<%- include("./partials/header.ejs") %>
+
+<div class="introheading">PROFILE</div>
+
+<div class="searchResult">
+  <div class="postCollection">
+     
+    <div class="postColletionInside">    
+        <div class="postContainer">
+            <h5> ID: <%=userdata._id %> </h5>
+            <ul> 
+                <li>User Name: <%= userdata.username %></li>
+                <li>Category: <%= userdata.category %></li>
+            </ul>
+        </div> 
+    </div>  
+    </div>
+
+<%- include("./partials/footer.ejs") %>
