@@ -157,7 +157,7 @@ router.put("/:profile/:type/:id",(req, res) => {
     var username=req.params.profile;  
         sponsData.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
             if (err) {
-                req.flash("erroe",err.toString());
+                req.flash("error",err.toString());
             }
             else {
                 req.flash("success","Updated Successfully");
