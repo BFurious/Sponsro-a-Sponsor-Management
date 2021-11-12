@@ -34,7 +34,7 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.use(function(req,res,next){
-   res.locals.ejsUsername=req.user;
+   res.locals.ejsid=req.user;
     res.locals.error=req.flash("error");
     res.locals.success=req.flash("success");
     next();
@@ -44,6 +44,6 @@ app.use(function(req,res,next){
 app.use(signup);
 app.use(home);
 app.use(profile);
-app.listen(process.env.PORT,process.env.IP,function(){
+app.listen("3000",process.env.IP,function(){
     console.log("started");
 });

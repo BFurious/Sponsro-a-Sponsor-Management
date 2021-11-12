@@ -5,7 +5,7 @@ middlewares.isLoggedIn = function(req, res, next){
         return next();
     }
     req.flash("error","Need to Register or Login");
-    res.redirect("/register");
+    res.redirect("/login");
 }
 
 middlewares.isLogged = function(req, res, next){

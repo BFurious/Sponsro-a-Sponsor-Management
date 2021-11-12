@@ -40,12 +40,12 @@ router.get("/:profile/:type/userdata",middlewares.isLoggedIn,function(req,res){
 
 /*-------------------------ADD SPONSOR----------------------------*/
 
-router.get("/:profile/:type/addSponsor",middlewares.isLoggedIn,function(req,res){    console.log("entered");
+router.get("/:profile/0/addSponsor",middlewares.isLoggedIn,function(req,res){    console.log("entered");
     var username=req.params.profile;
     res.render("addSponsor",{ejsUsername:username});
 })
 
-router.post("/:profile/:type/addSponsor",function(req,res){
+router.post("/:profile/0/addSponsor",function(req,res){
     var username=req.params.profile;
     var sponsdata=new sponsData(req.body);
     sponsdata.save(function (err,user) {
@@ -78,7 +78,7 @@ router.post("/:profile/:type/addSponsor",function(req,res){
 })
 
 /*--------------------------ADMIN-POSTS----------------------------*/
-router.get("/:profile/:type/posts",middlewares.isLoggedIn,function(req,res){
+router.get("/:profile/0/posts",middlewares.isLoggedIn,function(req,res){
     var username=req.params.profile;
     
     User.findOne({username:req.params.profile},function(err,user){
@@ -95,7 +95,7 @@ router.get("/:profile/:type/posts",middlewares.isLoggedIn,function(req,res){
 
 /*------------------------SPONSOR-APPLY---------------------------*/
 
-router.post("/:profile/:type/apply",function(req,res){
+router.post("/:profile/1/apply",function(req,res){
     var username=req.params.profile;
 
     User.findOne({username:req.params.profile},function(err,user){
@@ -123,7 +123,7 @@ router.post("/:profile/:type/apply",function(req,res){
 
 /*--------------------------USER APPLICATIONS----------------------------*/
 
-router.get("/:profile/:type/applications",middlewares.isLoggedIn,function(req,res){
+router.get("/:profile/1/applications",middlewares.isLoggedIn,function(req,res){
     var username=req.params.profile;
     User.findOne({username:req.params.profile},function(err,user){
         if(err)
@@ -139,7 +139,7 @@ router.get("/:profile/:type/applications",middlewares.isLoggedIn,function(req,re
 
 /*--------------------------UPDATE----------------------------*/
 
-router.get("/:profile/:type/:id/update",middlewares.isLoggedIn,function(req,res){ 
+router.get("/:profile/0/:id/update",middlewares.isLoggedIn,function(req,res){ 
     var username=req.params.profile;  
     sponsData.findById(req.params.id,function(err,data){
             if(err)
@@ -153,7 +153,7 @@ router.get("/:profile/:type/:id/update",middlewares.isLoggedIn,function(req,res)
     })
 })
 
-router.put("/:profile/:type/:id",(req, res) => {
+router.put("/:profile/0/:id",(req, res) => {
     var username=req.params.profile;  
         sponsData.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
             if (err) {
@@ -168,7 +168,7 @@ router.put("/:profile/:type/:id",(req, res) => {
 
     /*--------------------------DELETE----------------------------*/
 
-router.delete("/:profile/:type/:id",(req, res) =>{   
+router.delete("/:profile/0/:id",(req, res) =>{   
     var username=req.params.profile;
         sponsData.findByIdAndRemove(req.params.id,function (err) {
             if (err) {

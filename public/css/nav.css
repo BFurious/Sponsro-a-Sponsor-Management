@@ -10,8 +10,6 @@
 .nav-link {
 	font-family: 'Ubuntu';
 	text-transform:uppercase ;
-
-
   }
 
 * {
@@ -33,6 +31,7 @@
 	background-color: #000000e0;
 	background-blend-mode: darken;
 	padding: 0px;
+	
 }
 #navbarSupportedContent{
 	overflow: hidden;
@@ -44,23 +43,38 @@
 }
 #navbarSupportedContent ul li a i{
 	margin-right: 10px;
+	
 }
 #navbarSupportedContent li {
 	list-style-type: none;
 	float: left;
+	margin-left: 10px;
 }
 #navbarSupportedContent ul li a{
-	color: rgb(111, 111, 111);
+	color: rgb(194, 194, 194);
     font-size: 15px;
     display: block;
-    padding: 20px 20px;
+    padding: 15px 10px;
     transition-duration:0.6s;
 	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	border-radius:25px ;
     position: relative;
+	font-family: "pixel Emulator";
+	display:block;
 }
 #navbarSupportedContent ul li a:hover{
+	background-color: rgba(255, 255, 255, 0.849);
+	border-radius:100px ;
+	color:rgb(0, 0, 0);
+	animation: fade 0.5s ease-in;
+}
+@keyframes fade {
+	0%{	background-color: rgba(255, 255, 255, 0);
 
-	color:white;
+	}
+	100%{
+		background-color: rgb(255, 255, 255);
+	}
 }
 #navbarSupportedContent a:not(:only-child):after {
 	content: "\f105";

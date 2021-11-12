@@ -1,5 +1,5 @@
 <%- include("./partials/header.ejs") %>
-<%- include("./partials/adminheader.ejs") %>
+<%- include("./partials/userheader.ejs") %>
 
 
 <div class="introheading"> Search Results </div>
@@ -24,11 +24,22 @@
     </div>  
     <div class="smallButton" style="display: flex; width:100%;">
 
-                <button class="smallSubmit"> <a href="/<%=ejsUsername%>/0/<%=ele._id%>/update">Edit </a></button>
+        <form action="/<%=ejsUsername%>/1/apply" method="POST">
+
+            <input style="display:none" type="text" name="companyName" value="<%=ele.companyName%>"></input>
+
+            <input style="display:none" type="text" name="sponsorType" value="<%=ele.sponsorType%>"></input>    
+            
+            <input style="display:none" type="text" name="durationNo" value="<%=ele.durationNo%>"></input>           
+          
+            <input style="display:none" type="text" name="contactNo" value="<%=ele.contactNo%>"></input> 
+          
+            <input style="display:none" type="text" name="contactEmail" value="<%=ele.contactEmail%>"></input>
                 
-            <form action="/<%=ejsUsername%>/0/<%=ele._id%>?_method=DELETE" method="POST">
-                <button class="smallSubmit" id="delete">Delete</button>
-            </form>
+            <input style="display:none" type="text" name="logo" value="<%=ele.logo%>"></input>
+
+            <button class="smallSubmit">Apply Now</button>
+        </form>
     </div> 
     </div>
 <% }) %>

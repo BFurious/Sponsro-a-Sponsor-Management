@@ -70,7 +70,7 @@ router.post("/login",function(req,res,next){
     
     })(req, res, next);
 });
-router.get("/:profile/search",function(req,res){
+router.get("/:profile/:type/search",middlewares.isLoggedIn,function(req,res){
     var username=req.params.profile;
     var query=req.query.searchText;
     let choice=req.query.choice;
@@ -78,8 +78,14 @@ router.get("/:profile/search",function(req,res){
         if(err){  
             req.flash("error",err.tostring()); 
         }
-        else{  
-            res.render("search",{data:data, ejsUsername:username});  
+        else{ 
+            if(req.params.type==="0") 
+            {res.render("search",{data:data, ejsUsername:username});  
+            }
+            else
+            {res.render("usersearch",{data:data, ejsUsername:username});  
+
+            }
         }  
     })   
 })

@@ -9,6 +9,9 @@ router.get("/", function(req, res){
 router.get("/about",function(req,res){
     res.render("about");
 })
+router.get("/guide",function(req,res){
+    res.render("guide");
+})
 
 
 module.exports = router;
